@@ -16,12 +16,9 @@ import { SPINNER_SIZES } from '../../config/constants';
 const PostDetails = props => {
     const dispatch = useDispatch();
 
-    const { postId } = useParams();
-
-    const { userId } = useParams();
+    const { postId, userId } = useParams();
 
     const post = useSelector(state => state.posts.postData);
-
     const user = useSelector(state => state.users.userData);
 
     const [isAddCommentModalVisible, showAddCommentModal, hideAddCommentModal] = useModal();

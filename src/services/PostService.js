@@ -18,8 +18,6 @@ PostService.getPost = async id => {
 PostService.addPost = async data => {
     const { userId, values } = data;
 
-    // localStorage.setItem('newPost', JSON.stringify(data));
-
     const result = await axios.post(`${ENV.baseApiUrl}/users/${userId}/posts`, values);
 
     return result.data;

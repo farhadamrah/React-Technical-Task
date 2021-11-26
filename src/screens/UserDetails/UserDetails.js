@@ -11,7 +11,6 @@ import { hasData } from '../../utils/data';
 import AddPostModal from './AddPostModal/AddPostModal';
 import Header from '../../components/Header/Header';
 import useModal from '../../hooks/useModal';
-import AddCommentModal from '../PostDetails/AddCommentModal/AddCommentModal';
 import Spinner from '../../components/shared/Spinner/Spinner';
 import { SPINNER_SIZES } from '../../config/constants';
 
@@ -20,11 +19,10 @@ const UserDetails = props => {
 
     const dispatch = useDispatch();
 
-    const user = useSelector(state => state.users.userData);
-
-    const posts = useSelector(state => state.posts.postsData);
-
     const { userId } = useParams();
+
+    const user = useSelector(state => state.users.userData);
+    const posts = useSelector(state => state.posts.postsData);
 
     const [isAddPostModalVisible, showAddPostModal, hideAddPostModal] = useModal();
 

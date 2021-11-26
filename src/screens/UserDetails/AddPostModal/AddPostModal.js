@@ -27,17 +27,6 @@ const AddPostModal = props => {
     const onSubmit = async values => {
         await dispatch(addNewUserPost({ userId, values }));
 
-        // if (localStorage.length) {
-        //     const item = JSON.parse(localStorage.getItem('post'));
-        //
-        //     const newItem = { oldItem: item, newItem: values };
-        //
-        //     localStorage.setItem('post', JSON.stringify(newItem));
-        // } else {
-        //     localStorage.setItem('post', JSON.stringify(values));
-        // }
-
-        // localStorage.setItem('post', JSON.stringify(values));
         reset();
         hideAddPostModal();
     };
