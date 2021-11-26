@@ -4,11 +4,10 @@ import { getUsers } from '../../redux/actions/users';
 import { useDispatch, useSelector } from 'react-redux';
 import Card from '../../components/shared/Card/Card';
 import Button from '../../components/shared/Button/Button';
-import { Link, Route, Switch } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { BUTTON_TYPES, ROUTES, SPINNER_SIZES } from '../../config/constants';
 import { hasData } from '../../utils/data';
-import UserDetails from '../UserDetails/UserDetails';
-import PostDetails from '../PostDetails/PostDetails';
+
 import Spinner from '../../components/shared/Spinner/Spinner';
 
 const HomePage = props => {
@@ -25,10 +24,10 @@ const HomePage = props => {
             {!hasData(users) ? (
                 <Spinner size={SPINNER_SIZES.medium} />
             ) : (
-                <div className='grid sm:grid-cols-2 md:grid-cols-3 gap-6 lg:grid-cols-4 lg:gap-6 xl:gap-7 py-14'>
+                <div className='grid sm:grid-cols-2 md:grid-cols-3 gap-6 lg:grid-cols-4 lg:gap-6 xl:grid-cols-5 xl:gap-7 py-14'>
                     {users.map(user => (
                         <Card
-                            className={'flex flex-col justify-between h-80 sm:w-58 xl:w-65 font-medium'}
+                            className={'flex flex-col justify-between h-80 sm:w-58 2xl:w-11/12 font-medium'}
                             key={user.id}
                         >
                             <div className='flex flex-col text-sm'>

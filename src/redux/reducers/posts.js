@@ -10,6 +10,8 @@ const posts = (state = initialState, action) => {
 
     switch (action.type) {
         case TYPES.GET_USER_POSTS: {
+            JSON.parse(localStorage.getItem('post'));
+
             return { ...state, postsData: payload };
         }
 
