@@ -1,25 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import PropTypes from 'prop-types';
+import { BrowserRouter as Router } from 'react-router-dom';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import './components/shared/Icons/Icons';
+import Routes from './components/Routes/Routes';
+
+const App = props => {
+    return (
+        <Router>
+            <Routes />
+        </Router>
+    );
+};
+
+App.propTypes = {};
 
 export default App;
