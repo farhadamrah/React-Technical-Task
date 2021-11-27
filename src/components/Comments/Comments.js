@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { BUTTON_TYPES } from '../../config/constants';
 import Button from '../shared/Button/Button';
-import { useParams } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
 import { getPostComments } from '../../redux/actions/comments';
-import { hasData } from '../../utils/data';
+import { hasObjData } from '../../utils/data';
 import Card from '../shared/Card/Card';
 
 const Comments = props => {
@@ -28,6 +28,8 @@ const Comments = props => {
         // return () => dispatch(getPostComments(postId));
     }, [postId]);
 
+    console.log(comments);
+
     return (
         <div>
             <div className='flex justify-between my-5'>
@@ -43,7 +45,7 @@ const Comments = props => {
             </div>
 
             {commentsIsShown &&
-                hasData(comments) &&
+                hasObjData(comments) &&
                 comments.map(comment => (
                     <Card className={'mb-5'} key={comment.id}>
                         <div className='flex justify-between mb-5'>

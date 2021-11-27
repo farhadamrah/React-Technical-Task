@@ -6,7 +6,7 @@ import Card from '../../components/shared/Card/Card';
 import Button from '../../components/shared/Button/Button';
 import { Link } from 'react-router-dom';
 import { BUTTON_TYPES, ROUTES, SPINNER_SIZES } from '../../config/constants';
-import { hasData } from '../../utils/data';
+import { hasArrData } from '../../utils/data';
 
 import Spinner from '../../components/shared/Spinner/Spinner';
 
@@ -21,7 +21,7 @@ const HomePage = props => {
 
     return (
         <>
-            {!hasData(users) ? (
+            {!hasArrData(users) ? (
                 <Spinner size={SPINNER_SIZES.medium} />
             ) : (
                 <div className='grid sm:grid-cols-2 md:grid-cols-3 gap-6 lg:grid-cols-4 lg:gap-6 xl:grid-cols-5 xl:gap-7 py-14'>

@@ -25,8 +25,6 @@ export const addNewPostComment = data => async dispatch => {
     try {
         const response = await CommentService.addPostComment(data);
 
-        console.log(response);
-
         dispatch(setNewPostComment(response));
     } catch (error) {
         console.log(error);

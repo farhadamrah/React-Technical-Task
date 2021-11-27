@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { deletePost, getUserPosts, removeUserPosts } from '../../redux/actions/posts';
 import { getUser, removeUser } from '../../redux/actions/users';
 import Card from '../../components/shared/Card/Card';
-import { hasData } from '../../utils/data';
+import { hasArrData } from '../../utils/data';
 import AddPostModal from './AddPostModal/AddPostModal';
 import Header from '../../components/Header/Header';
 import useModal from '../../hooks/useModal';
@@ -44,7 +44,7 @@ const UserDetails = props => {
 
     return (
         <>
-            {!hasData(posts) ? (
+            {!hasArrData(posts) ? (
                 <Spinner size={SPINNER_SIZES.medium} />
             ) : (
                 <div>

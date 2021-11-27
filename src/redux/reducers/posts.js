@@ -1,5 +1,7 @@
 import * as TYPES from '../types';
 
+const storageData = JSON.parse(localStorage.getItem('posts'));
+
 const initialState = {
     postsData: [],
     postData: [],
@@ -10,9 +12,9 @@ const posts = (state = initialState, action) => {
 
     switch (action.type) {
         case TYPES.GET_USER_POSTS: {
-            JSON.parse(localStorage.getItem('post'));
+            const postsData = storageData ? storageData : payload;
 
-            return { ...state, postsData: payload };
+            return { ...state, postsData: postsData };
         }
 
         case TYPES.REMOVE_USER_POSTS: {
@@ -28,11 +30,19 @@ const posts = (state = initialState, action) => {
         }
 
         case TYPES.ADD_NEW_USER_POST: {
-            return { ...state, postsData: [...state.postsData, payload] };
+            const postsData = [...state.postsData, payload];
+
+            localStorage.setItem('posts', JSON.stringify(postsData));
+
+            return { ...state, postsData: postsData };
         }
 
         case TYPES.DELETE_USER_POST: {
-            return { ...state, postsData: state.postsData.filter(post => post.id !== payload.id) };
+            const deletedPost = state.postsData.filter(post => post.id !== payload.id);
+
+            localStorage.setItem('posts', JSON.stringify(deletedPost));
+
+            return { ...state, postsData: deletedPost };
         }
 
         default: {

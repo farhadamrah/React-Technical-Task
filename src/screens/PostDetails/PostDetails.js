@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 
 import { getUserPost, removeUserPost } from '../../redux/actions/posts';
-import { hasData } from '../../utils/data';
 import Comments from '../../components/Comments/Comments';
 import Header from '../../components/Header/Header';
 import { getUser, removeUser } from '../../redux/actions/users';
@@ -12,6 +11,7 @@ import useModal from '../../hooks/useModal';
 import AddCommentModal from './AddCommentModal/AddCommentModal';
 import Spinner from '../../components/shared/Spinner/Spinner';
 import { SPINNER_SIZES } from '../../config/constants';
+import { hasObjData } from '../../utils/data';
 
 const PostDetails = props => {
     const dispatch = useDispatch();
@@ -35,7 +35,7 @@ const PostDetails = props => {
         };
     }, [postId, userId]);
 
-    return !hasData(post) ? (
+    return !hasObjData(post) ? (
         <Spinner size={SPINNER_SIZES.medium} />
     ) : (
         <>
