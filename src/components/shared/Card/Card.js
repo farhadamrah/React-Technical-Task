@@ -13,6 +13,8 @@ const Card = props => {
     );
 };
 
-Card.propTypes = {};
+Card.propTypes = {
+    className: PropTypes.string,
+};
 
 export default Card;

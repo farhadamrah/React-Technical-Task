@@ -1,62 +1,48 @@
-import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 
 import { getUserPost, removeUserPost } from '../../redux/actions/posts';
-import Comments from '../../components/Comments/Comments';
-import Header from '../../components/Header/Header';
-import { getUser, removeUser } from '../../redux/actions/users';
 import useModal from '../../hooks/useModal';
-import AddCommentModal from './AddCommentModal/AddCommentModal';
-import Spinner from '../../components/shared/Spinner/Spinner';
-import { SPINNER_SIZES } from '../../config/constants';
 import { hasObjData } from '../../utils/data';
+import Comments from '../../components/Comments/Comments';
+import AddCommentModal from '../../components/AddCommentModal/AddCommentModal';
 
 const PostDetails = props => {
-    const dispatch = useDispatch();
-
-    const { postId, userId } = useParams();
-
-    const post = useSelector(state => state.posts.postData);
-    const user = useSelector(state => state.users.userData);
-
     const [isAddCommentModalVisible, showAddCommentModal, hideAddCommentModal] = useModal();
 
+    const dispatch = useDispatch();
+
+    const { postId } = useParams();
+
+    const post = useSelector(state => state.posts.postData);
+
     useEffect(() => {
-        (async () => {
-            await dispatch(getUserPost(postId));
-            await dispatch(getUser(userId));
-        })();
+        dispatch(getUserPost(postId));
 
         return () => {
             dispatch(removeUserPost());
-            dispatch(removeUser());
         };
-    }, [postId, userId]);
+    }, [postId]);
 
-    return !hasObjData(post) ? (
-        <Spinner size={SPINNER_SIZES.medium} />
-    ) : (
-        <>
-            <div>
-                <Header name={user.name} />
+    return (
+        hasObjData(post) && (
+            <>
+                <div>
+                    <h1 className='text-2xl lg:text-3xl font-bold text-center md:tracking-wide my-10'>{post.title}</h1>
+                    <p className='text-justify font-medium mb-12'>{post.body.toString().repeat(10)}</p>
 
-                <h1 className='text-2xl lg:text-3xl font-bold text-center md:tracking-wide my-10'>{post.title}</h1>
-                <p className='text-justify font-medium mb-12'>{post.body.toString().repeat(10)}</p>
+                    <Comments showModal={showAddCommentModal} />
+                </div>
 
-                <Comments showModal={showAddCommentModal} />
-            </div>
-
-            <AddCommentModal
-                isAddCommentModalVisible={isAddCommentModalVisible}
-                showAddCommentModal={showAddCommentModal}
-                hideAddCommentModal={hideAddCommentModal}
-            />
-        </>
+                <AddCommentModal
+                    isAddCommentModalVisible={isAddCommentModalVisible}
+                    showAddCommentModal={showAddCommentModal}
+                    hideAddCommentModal={hideAddCommentModal}
+                />
+            </>
+        )
     );
 };
-
-PostDetails.propTypes = {};
 
 export default PostDetails;

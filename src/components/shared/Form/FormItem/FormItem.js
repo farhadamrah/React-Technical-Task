@@ -16,6 +16,10 @@ const FormItem = props => {
     );
 };
 
-FormItem.propTypes = {};
+FormItem.propTypes = {
+    label: PropTypes.string,
+    hasValidationError: PropTypes.bool,
+    helpMessage: PropTypes.string,
+};
 
 export default FormItem;

@@ -3,11 +3,11 @@ import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
-import Modal from '../../../components/shared/Modal/Modal';
-import FormItem from '../../../components/shared/Form/FormItem/FormItem';
-import Input from '../../../components/shared/Form/Input/Input';
-import Textarea from '../../../components/shared/Form/Textarea/Textarea';
-import { addNewUserPost } from '../../../redux/actions/posts';
+import { addNewUserPost } from '../../redux/actions/posts';
+import Modal from '../shared/Modal/Modal';
+import FormItem from '../shared/Form/FormItem/FormItem';
+import Input from '../shared/Form/Input/Input';
+import Textarea from '../shared/Form/Textarea/Textarea';
 
 const AddPostModal = props => {
     const { isAddPostModalVisible, showAddPostModal, hideAddPostModal } = props;
@@ -57,6 +57,10 @@ const AddPostModal = props => {
     );
 };
 
-AddPostModal.propTypes = {};
+AddPostModal.propTypes = {
+    isAddPostModalVisible: PropTypes.bool,
+    showAddPostModal: PropTypes.func,
+    hideAddPostModal: PropTypes.func,
+};
 
 export default AddPostModal;

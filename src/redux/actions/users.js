@@ -25,7 +25,7 @@ export const getUsers = () => async dispatch => {
 
 export const getUser = id => async dispatch => {
     try {
-        const response = await UserService.getUser(id);
+        const response = await UserService.getUserData(id);
 
         dispatch(setUser(response));
     } catch (error) {

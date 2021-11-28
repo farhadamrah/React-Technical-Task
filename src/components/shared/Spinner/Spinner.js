@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import styles from './Spinner.module.css';
 import { SPINNER_SIZES } from '../../../config/constants';
 
@@ -18,6 +19,10 @@ const Spinner = props => {
             <h2 className='text-center text-black text-xl font-bold mt-4'>Loading...</h2>
         </div>
     );
+};
+
+Spinner.propTypes = {
+    size: PropTypes.string,
 };
 
 export default Spinner;

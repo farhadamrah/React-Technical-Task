@@ -10,6 +10,8 @@ const Textarea = forwardRef((props, ref) => {
     return <textarea ref={ref} className={classNames(textareaStyles, className)} rows={6} {...textareaProps} />;
 });
 
-Textarea.propTypes = {};
+Textarea.propTypes = {
+    className: PropTypes.string,
+};
 
 export default Textarea;

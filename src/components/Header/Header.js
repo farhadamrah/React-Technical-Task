@@ -1,11 +1,13 @@
 import PropTypes from 'prop-types';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Header = props => {
-    const { name, addButton, showModal } = props;
+    const { name, showModal } = props;
 
     const { goBack } = useHistory();
+
+    const { pathname } = useLocation();
 
     return (
         <div className='py-10 flex items-center justify-between relative'>
@@ -16,7 +18,7 @@ const Header = props => {
 
             <div className='text-2xl font-medium absolute text-center w-full z-10'>{name}</div>
 
-            {addButton && (
+            {pathname.length < 13 && (
                 <FontAwesomeIcon
                     icon='plus-circle'
                     size='3x'
@@ -29,6 +31,9 @@ const Header = props => {
     );
 };
 
-Header.propTypes = {};
+Header.propTypes = {
+    name: PropTypes.string,
+    showModal: PropTypes.func,
+};
 
 export default Header;

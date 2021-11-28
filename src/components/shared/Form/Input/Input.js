@@ -10,6 +10,8 @@ const Input = forwardRef((props, ref) => {
     return <input ref={ref} className={classNames(inputStyle, className)} {...inputProps} />;
 });
 
-Input.propTypes = {};
+Input.propTypes = {
+    className: PropTypes.string,
+};
 
 export default Input;

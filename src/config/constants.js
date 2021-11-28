@@ -2,6 +2,9 @@ export const ROUTES = {
     homePage: {
         path: '/app',
     },
+    userPage: {
+        path: '/app/user/:userId',
+    },
     userDetails: {
         path: '/app/user/:userId',
     },

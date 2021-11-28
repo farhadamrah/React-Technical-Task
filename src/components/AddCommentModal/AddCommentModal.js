@@ -3,11 +3,11 @@ import { useParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 
-import Modal from '../../../components/shared/Modal/Modal';
-import FormItem from '../../../components/shared/Form/FormItem/FormItem';
-import Input from '../../../components/shared/Form/Input/Input';
-import Textarea from '../../../components/shared/Form/Textarea/Textarea';
-import { addNewPostComment } from '../../../redux/actions/comments';
+import { addNewPostComment } from '../../redux/actions/comments';
+import Modal from '../shared/Modal/Modal';
+import FormItem from '../shared/Form/FormItem/FormItem';
+import Input from '../shared/Form/Input/Input';
+import Textarea from '../shared/Form/Textarea/Textarea';
 
 const AddCommentModal = props => {
     const { isAddCommentModalVisible, showAddCommentModal, hideAddCommentModal } = props;
@@ -61,6 +61,10 @@ const AddCommentModal = props => {
     );
 };
 
-AddCommentModal.propTypes = {};
+AddCommentModal.propTypes = {
+    isAddCommentModalVisible: PropTypes.bool,
+    showAddCommentModal: PropTypes.func,
+    hideAddCommentModal: PropTypes.func,
+};
 
 export default AddCommentModal;

@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 import './components/shared/Icons/Icons';
@@ -11,7 +10,5 @@ const App = props => {
         </Router>
     );
 };
-
-App.propTypes = {};
 
 export default App;

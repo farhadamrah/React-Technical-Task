@@ -9,7 +9,7 @@ UserService.getUsersData = async () => {
     return result.data;
 };
 
-UserService.getUser = async id => {
+UserService.getUserData = async id => {
     const result = await axios.get(`${ENV.baseApiUrl}/users/${id}`);
 
     return result.data;
